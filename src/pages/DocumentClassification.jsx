@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 const DocumentClassification = () => {
   const [documentClass, setDocumentClass] = useState('');
@@ -33,7 +34,7 @@ const DocumentClassification = () => {
             </div>
             <div>
               <Label htmlFor="criteria">Classification Criteria</Label>
-              <Input
+              <Textarea
                 id="criteria"
                 value={criteria}
                 onChange={(e) => setCriteria(e.target.value)}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -9,15 +9,39 @@ const RuleCreation = () => {
   const [rule, setRule] = useState('');
   const [validationResult, setValidationResult] = useState('');
 
-  const handleValidateRule = () => {
-    // Logic to validate rule
-    console.log('Rule:', rule);
-    setValidationResult('Validation successful');
+  const handleValidateRule = async () => {
+    // Updated logic to validate rule
+    try {
+      const response = await fetch('/api/validate-rule', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ rule }),
+      });
+      const result = await response.json();
+      setValidationResult(result.message);
+    } catch (error) {
+      console.error('Error validating rule:', error);
+      setValidationResult('Validation failed');
+    }
   };
 
-  const handleSaveRule = () => {
-    // Logic to save rule
-    console.log('Rule saved:', rule);
+  const handleSaveRule = async () => {
+    // Updated logic to save rule
+    try {
+      const response = await fetch('/api/save-rule', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ rule }),
+      });
+      const result = await response.json();
+      console.log('Rule saved:', result);
+    } catch (error) {
+      console.error('Error saving rule:', error);
+    }
   };
 
   return (
@@ -35,11 +59,12 @@ const RuleCreation = () => {
                 value={rule}
                 onChange={(e) => setRule(e.target.value)}
                 placeholder="Enter data extraction rule"
+                className="border border-gray-300"
               />
             </div>
-            <Button onClick={handleValidateRule}>Validate Rule</Button>
-            {validationResult && <p>{validationResult}</p>}
-            <Button onClick={handleSaveRule}>Save Rule</Button>
+            <Button variant="primary" onClick={handleValidateRule}>Validate Rule</Button>
+            {validationResult && <p className="text-green-500">{validationResult}</p>}
+            <Button variant="secondary" onClick={handleSaveRule}>Save Rule</Button>
           </div>
         </CardContent>
       </Card>

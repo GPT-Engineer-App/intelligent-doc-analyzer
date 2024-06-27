@@ -15,7 +15,9 @@ const Reporting = () => {
           <CardTitle className="text-3xl text-center">Reporting</CardTitle>
         </CardHeader>
         <CardContent>
-          <Button onClick={handleGenerateReport}>Generate Report</Button>
+          <div className="space-y-4">
+            <Button onClick={handleGenerateReport}>Generate Report</Button>
+          </div>
         </CardContent>
       </Card>
     </div>
