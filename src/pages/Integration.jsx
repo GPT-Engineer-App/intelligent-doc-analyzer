@@ -20,8 +20,10 @@ const Integration = () => {
           <CardTitle className="text-3xl text-center">Integration</CardTitle>
         </CardHeader>
         <CardContent>
-          <Button onClick={handleImportData}>Import Data</Button>
-          <Button onClick={handleExportData}>Export Data</Button>
+          <div className="space-y-4">
+            <Button onClick={handleImportData}>Import Data</Button>
+            <Button onClick={handleExportData}>Export Data</Button>
+          </div>
         </CardContent>
       </Card>
     </div>
