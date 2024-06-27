@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <div className="flex flex-col h-screen p-4 bg-gray-800 text-white">
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="flex flex-col space-y-2">
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link to="/">Main Dashboard</Link>
