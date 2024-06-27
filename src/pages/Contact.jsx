@@ -1,16 +1,16 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const Index = () => {
+const Contact = () => {
   return (
     <div className="h-screen w-screen flex items-center justify-center">
       <Card className="w-[600px]">
         <CardHeader>
-          <CardTitle className="text-3xl text-center">Welcome to the Portal</CardTitle>
+          <CardTitle className="text-3xl text-center">Contact Us</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-center">
-            Use the navigation menu to explore the features of the portal.
+            For any inquiries, please email us at support@portal.com.
           </p>
         </CardContent>
       </Card>
@@ -18,4 +18,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Contact;
